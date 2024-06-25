@@ -31,7 +31,7 @@ public class QuestionnaireResource {
         @Path("/{taxCode}")
         @Produces(MediaType.APPLICATION_JSON)
         public Response getQuestionnaireByTaxCode(@PathParam("taxCode") String taxCode) {
-        if (!questionnaireService.findAllQuestionnaires().isEmpty()) {
+        if (questionnaireService.findQuestionnaireByTaxCode(taxCode)!=null) {
             return Response.ok(questionnaireService.findQuestionnaireByTaxCode(taxCode)).build();
         } else {
             return Response.status(Response.Status.NOT_FOUND).build();
